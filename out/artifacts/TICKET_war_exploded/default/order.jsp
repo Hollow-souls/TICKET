@@ -158,10 +158,18 @@
                     <option value="商务舱">商务舱</option>
                     <option value="经济舱">经济舱</option>
                 </select>
+                <select name="seat" class="form-control input-sm w150" style="display: inline-block;">
+                    <option disabled="座位选择" selected="selected">座位选择</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                </select>
                 <input name="passenger_id" type="text" class="form-control input-sm w300"
                        style="display: inline-block;" placeholder="身份证件号码">
             </div>
-
 
 
             <!-- 航班信息 结束 -->

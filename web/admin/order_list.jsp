@@ -1,5 +1,7 @@
 <%@ page import="javabean.db_conn" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: yog
   Date: 2022/1/4
@@ -61,24 +63,28 @@
                                     ResultSet res=conn.executeQuery(sql);
                                     String row=null;
                                     while(res.next()){
-                                        if(res.getRow()%2==0){
-                                            row="even";
-                                        }else{
-                                            row="odd";
-                                        }
+                                        int i=0;
+                                        List list=new ArrayList();
+                                        list.add(res.getString(1));
+                                        session.setAttribute("list",list);
+                                        session.setAttribute("i",i);
                                 %>
 
-                                <tr role="row" class="<%=row %>">
-                                    <td class="sorting_1"><%=res.getString(2) %></td>
-                                    <td><%=res.getString(3) %></td>
-                                    <td><%=res.getString(4) %></td>
+                                <tr>
+                                    <td>
+                                        <%=res.getString(3) %>
+                                    </td>
+                                    <td><p><%=res.getString(4) %></p></td>
                                     <td><%=res.getString(5) %></td>
                                     <td><%=res.getString(6) %></td>
                                     <td><%=res.getString(7) %></td>
                                     <td><%=res.getString(8) %></td>
                                     <td><%=res.getString(9) %></td>
+                                    <td><a href="/TICKET_war_exploded/TD?id=${list[i]}" class="btn btn-danger btn-sm">退订</a></td>
                                 </tr>
+
                                 <%
+                                        i++;
                                     }
                                 %>
 

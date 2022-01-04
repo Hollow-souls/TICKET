@@ -1,5 +1,8 @@
 <%@ page import="javabean.db_conn" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.awt.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: yog
   Date: 2022/1/4
@@ -124,7 +127,11 @@
             String sql="select * from t_order where order_user='"+user_id+"'";
             ResultSet res=conn.executeQuery(sql);
             while(res.next()){
-
+                int i=0;
+                List list=new ArrayList();
+                list.add(res.getString(1));
+                session.setAttribute("list",list);
+                session.setAttribute("i",i);
         %>
 
         <tr>
@@ -137,10 +144,11 @@
             <td><%=res.getString(7) %></td>
             <td><%=res.getString(8) %></td>
             <td><%=res.getString(9) %></td>
-
+            <td><a href="/TICKET_war_exploded/TD?id=${list[i]}" class="btn btn-danger btn-sm">退订</a></td>
         </tr>
 
         <%
+                i++;
             }
         %>
 

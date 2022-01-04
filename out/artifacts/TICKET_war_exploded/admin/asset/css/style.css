@@ -388,7 +388,7 @@ p.quote:before {
 
 /*start: Login*/
 .form-signin-wrapper {
-	background: url(../img/xj-bg.jpg) !important;
+	background: url(../images/bg.jpg) !important;
 	background-size: cover;
 }
 .form-signin {

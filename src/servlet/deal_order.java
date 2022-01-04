@@ -27,17 +27,18 @@ public class deal_order extends HttpServlet {
             String passenger_name=req.getParameter("passenger_name");
             String date=req.getParameter("date");
             String grade=req.getParameter("grade");
+            String seat=req.getParameter("seat");
             String passenger_id=req.getParameter("passenger_id");
             String contact=req.getParameter("contact");
             String contact_phone=req.getParameter("contact_phone");
 
-
-            /*
-             * System.out.println(f_i); System.out.println(passenger_name);
-             * System.out.println(date); System.out.println(grade);
-             * System.out.println(passenger_id); System.out.println(contact);
-             * System.out.println(contact_phone);
-             */
+            int num=0;
+            switch (grade){
+                case "头等舱": num=(int) (Math.random()*10+1);break;
+                case "商务舱": num=(int) (Math.random()*30+11);break;
+                case "经济仓": num=(int) (Math.random()*50+31);break;
+            }
+            grade=grade.concat(seat).concat(String.valueOf(num));
 
             if(f_i!=""&&passenger_name!=""&&date!=""&&grade!=""&&passenger_id!=""&&contact!=""&&contact_phone!="") {
                 db_conn conn=new db_conn();
